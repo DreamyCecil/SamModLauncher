@@ -21,6 +21,7 @@
 
 #include <string>
 #include <algorithm>
+#include <direct.h>
 #include <windows.h>
 
 using namespace std;
@@ -119,8 +120,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
   strMod = strMod.erase(iModDirEnd);
 
   // Path to the desired game executable and mod launch arguments
-  wstring strGameExe = _strPath.substr(0, iModsDir) + strBin + _strExe;
+  wstring strGameBin = _strPath.substr(0, iModsDir) + strBin;
+  wstring strGameExe = strGameBin + _strExe;
   wstring strCmd = L" +game \"" + strMod + L"\"";
+
+  // Change working directory to the game's one
+  _wchdir(strGameBin.c_str());
 
   // Start application with the mod
   STARTUPINFOW cif;
