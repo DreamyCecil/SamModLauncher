@@ -66,7 +66,10 @@ void AssertDir(size_t iDir) {
   if (iDir != wstring::npos) return;
 
   ShowError(L"Please place '" + _strExe + L"' inside any folder under 'Mods' to launch that specific mod!\n"
-            L"For example: 'C:\\SeriousSam\\Mods\\MyMod\\'\n");
+            L"For example: 'C:\\SeriousSam\\Mods\\MyMod\\'\n\n"
+            L"NOTE: This is simply a mod launcher! Make sure you aren't mistaking it for the game's executables, "
+            L"which all have distinct icons on them!\n\n"
+            L"This executable should always be placed under\n'Mods/<any mod folder>' and nowhere else.\n");
 
   exit(EXIT_SUCCESS);
 };
